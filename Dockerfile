@@ -19,6 +19,9 @@ ENV LEIN_REPL_HOST "0.0.0.0"
 ENV LEIN_REPL_PORT 47480
 EXPOSE 47480
 
+# Allow mounting of project directory as working directory
+WORKDIR /project
+
 # This image is made to run leinigen
 ENTRYPOINT ["lein"]
 
