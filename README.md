@@ -1,6 +1,6 @@
 Docker container to run leinigen.
 
-# Usage
+## Usage
 Run a Clojure REPL
 
 ```sh
