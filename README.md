@@ -1,4 +1,4 @@
-Docker container to run leinigen.
+Run [leinigen](http://leiningen.org) in a Docker container.
 
 ## Usage
 Run a Clojure REPL
@@ -7,21 +7,24 @@ Run a Clojure REPL
 docker run -it jehrhardt/lein
 ```
 
-Mount the local Maven repository into the container to prevent downloading
-dependencies on each container start
-
-```sh
-docker run -it -v $HOME/.m2/repository:/maven-repo jehrhardt/lein
-```
-
 Run a headless REPL and make it available under port 8080
 
 ```sh
-docker run -it -v $HOME/.m2/repository:/maven-repo -p 8080:47480 jehrhardt/lein repl :headless
+docker run -it -p 8080:47480 jehrhardt/lein repl :headless
 ```
 
-Mount the current directory as working directory
+Everytime you run a new container, leinigen and all the dependencies will be downloaded. To prevent this, you can create a named container and start it again.
 
 ```sh
-docker run -it -v $HOME/.m2/repository:/maven-repo -v $PWD:/project jehrhardt/lein
+# Create a new leinigen container
+docker run -it --name=my-repl jehrhardt/lein
+
+# Run the container again
+ docker start -i my-repl
+```
+
+Mount the current directory as working directory to get a project REPL.
+
+```sh
+docker run -it -v `pwd`:`pwd` -w `pwd` jehrhardt/lein
 ```
