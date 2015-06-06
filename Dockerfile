@@ -12,7 +12,7 @@ ADD https://raw.githubusercontent.com/technomancy/leiningen/2.5.1/bin/lein $LEIN
 RUN chmod +x $LEIN_HOME/bin/lein
 ENV PATH $PATH:$LEIN_HOME/bin
 
-# Use /maven-repo as local Maven repository
+# Set leiningen's local Maven repository
 VOLUME ["/var/lib/lein/maven-repo"]
 ADD repl-profile.clj $LEIN_HOME/profiles.d/repl.clj
 
