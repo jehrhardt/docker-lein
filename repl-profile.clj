@@ -1,1 +1,1 @@
-{ :local-repo "/maven-repo" }
+{ :local-repo "/var/lib/lein/maven-repo" }
