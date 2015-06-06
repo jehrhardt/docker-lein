@@ -5,12 +5,13 @@ MAINTAINER Jan Ehrhardt <jan.ehrhardt@gmail.com>
 # Enable running leinigen as root
 ENV LEIN_ROOT 1
 
-# Install leinigen to /opt/lein
-ENV LEIN_HOME /opt/lein
-ADD https://github.com/technomancy/leiningen/releases/download/2.5.1/leiningen-2.5.1-standalone.zip $LEIN_HOME/self-installs/leiningen-2.5.1-standalone.jar
-ADD https://raw.githubusercontent.com/technomancy/leiningen/2.5.1/bin/lein $LEIN_HOME/bin/lein
-RUN chmod +x $LEIN_HOME/bin/lein
-ENV PATH $PATH:$LEIN_HOME/bin
+# Install leinigen to /usr/local/lib/lein
+ENV LEIN_HOME /usr/local/lein
+ADD https://raw.githubusercontent.com/technomancy/leiningen/2.5.1/bin/lein /usr/local/bin/lein
+RUN chmod +x /usr/local/bin/lein
+
+# The `lein` command above will download leiningen automatically to this volume
+VOLUME ["/usr/local/lein/self-installs"]
 
 # Set leiningen's local Maven repository
 VOLUME ["/var/lib/lein/maven-repo"]
