@@ -16,7 +16,7 @@ ENV PATH $PATH:$LEIN_HOME/bin
 VOLUME ["/var/lib/lein/maven-repo"]
 ADD repl-profile.clj $LEIN_HOME/profiles.d/repl.clj
 
-# Make leiningen's REPL accessable via port 47480
+# Make leiningen's REPL accessible via port 47480
 ENV LEIN_REPL_HOST "0.0.0.0"
 ENV LEIN_REPL_PORT 47480
 EXPOSE 47480
