@@ -4,7 +4,7 @@ Run [leinigen](http://leiningen.org) in a Docker container.
 Run a Clojure REPL
 
 ```sh
-docker run -it jehrhardt/lein
+docker run -it jehrhardt/lein repl
 ```
 
 Run a headless REPL and make it available under port 8080
@@ -19,7 +19,7 @@ start it again.
 
 ```sh
 # Create a new leinigen container
-docker run -it --name=my-repl jehrhardt/lein
+docker run -it --name=my-repl jehrhardt/lein repl
 
 # Run the same container again
  docker start -i my-repl
@@ -28,5 +28,5 @@ docker run -it --name=my-repl jehrhardt/lein
 Mount the current directory as working directory to get a project REPL.
 
 ```sh
-docker run -it -v `pwd`:`pwd` -w `pwd` jehrhardt/lein
+docker run -it -v `pwd`:`pwd` -w `pwd` jehrhardt/lein repl
 ```

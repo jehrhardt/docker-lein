@@ -22,6 +22,3 @@ EXPOSE 47480
 
 # This image is made to run leinigen
 ENTRYPOINT ["lein"]
-
-# Start a REPL by default
-CMD ["repl"]
