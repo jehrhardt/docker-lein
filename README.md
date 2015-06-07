@@ -13,13 +13,15 @@ Run a headless REPL and make it available under port 8080
 docker run -it -p 8080:47480 jehrhardt/lein repl :headless
 ```
 
-Everytime you run a new container, leinigen and all the dependencies will be downloaded. To prevent this, you can create a named container and start it again.
+Everytime you run a new container, all dependencies will be
+downloaded. To prevent this, you can create a named container and
+start it again.
 
 ```sh
 # Create a new leinigen container
 docker run -it --name=my-repl jehrhardt/lein
 
-# Run the container again
+# Run the same container again
  docker start -i my-repl
 ```
 
