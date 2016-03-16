@@ -1,4 +1,4 @@
-FROM java:8
+FROM java:8-jdk-alpine
 
 MAINTAINER Jan Ehrhardt <jan.ehrhardt@gmail.com>
 
@@ -6,9 +6,10 @@ MAINTAINER Jan Ehrhardt <jan.ehrhardt@gmail.com>
 ENV LEIN_ROOT 1
 
 # Install leinigen to /usr/local/lein
-ADD https://github.com/technomancy/leiningen/releases/download/2.5.1/leiningen-2.5.1-standalone.zip /usr/local/lein/self-installs/leiningen-2.5.1-standalone.jar
-ADD https://raw.githubusercontent.com/technomancy/leiningen/2.5.1/bin/lein /usr/local/bin/lein
+RUN apk add --update bash
+ADD https://raw.githubusercontent.com/technomancy/leiningen/2.6.1/bin/lein /usr/local/bin/lein
 RUN chmod +x /usr/local/bin/lein
+ADD https://github.com/technomancy/leiningen/releases/download/2.6.1/leiningen-2.6.1-standalone.zip /usr/local/lein/self-installs/leiningen-2.6.1-standalone.jar
 ENV LEIN_HOME /usr/local/lein
 
 # Set leiningen's local Maven repository
